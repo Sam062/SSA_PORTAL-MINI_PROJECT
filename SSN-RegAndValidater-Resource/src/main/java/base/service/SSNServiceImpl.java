@@ -17,8 +17,11 @@ public class SSNServiceImpl implements SSNService {
 	public UserEntity saveUser(UserModel model) {
 		UserEntity entity=new UserEntity();
 		BeanUtils.copyProperties(model, entity);
-		System.out.println(entity);
 		return repo.save(entity);
+	}
+	@Override
+	public Boolean findBySSN(Long ssn) {
+		return (repo.findBySsn(ssn)!=null);
 	}
 
 }
