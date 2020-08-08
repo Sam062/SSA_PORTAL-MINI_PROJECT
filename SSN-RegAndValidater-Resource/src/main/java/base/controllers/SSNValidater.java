@@ -1,9 +1,10 @@
 package base.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import base.service.SSNService;
@@ -14,12 +15,12 @@ public class SSNValidater {
 	private SSNService service;
 
 	@PostMapping("/validateSSN/{ssn}")
-	public @ResponseBody String validateSSN(@PathVariable("ssn")Long number) {
+	public ResponseEntity<String> validateSSN(@PathVariable("ssn")Long number) {
 		Boolean isSSNExist = service.findBySSN(number);
 		if(isSSNExist)
-			return "GIVEN SSN IS VALID.";
+			return new ResponseEntity<String>("VALID",HttpStatus.OK);
 		else
-			return "PLEASE ENROLL FOR SSN AND TRY AGAIN";
+			return new ResponseEntity<String>("IN-VALID",HttpStatus.OK);
 
 	}
 

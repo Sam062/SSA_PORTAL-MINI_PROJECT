@@ -21,13 +21,11 @@ public class SSNEnrollmentRestController {
 
 	@ApiOperation("This Resource is used to Create SSN record in Database.")
 	@PostMapping(value = "/saveSsn", 
-			consumes = {"application/json","application/xml"},
-			produces = {"application/json","application/xml"}
+	consumes = "application/json"
 			)
-	public ResponseEntity<String> enroll(@RequestBody()UserModel model){
+	public ResponseEntity<String> enroll(@RequestBody UserModel model){
 		UserEntity saveUser = service.saveUser(model);
-		if(null!=saveUser)
-			return new ResponseEntity<String>("Enrollment Successfull. SSN : "+saveUser.getSsn(),HttpStatus.CREATED);
-		return new ResponseEntity<String>("Couldn't Enroll.",HttpStatus.BAD_REQUEST);
+		String body="Your SSN Enrollment Completed Successfully. SSN : "+saveUser.getSsn();
+		return new ResponseEntity<String>(body,HttpStatus.CREATED);
 	}
 }

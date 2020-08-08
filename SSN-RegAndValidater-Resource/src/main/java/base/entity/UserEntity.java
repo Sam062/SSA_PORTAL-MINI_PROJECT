@@ -28,7 +28,7 @@ public class UserEntity {
 	@Column(name = "LNAME")
 	private String lastName;
 	@Column(name = "GENDER")
-	private Character gender;
+	private String gender;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DOB")
