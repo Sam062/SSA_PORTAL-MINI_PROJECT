@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import base.exceptions.NoDataFoundException;
 import base.service.SSNService;
 
 @RestController
@@ -20,7 +21,7 @@ public class SSNValidater {
 		if(isSSNExist)
 			return new ResponseEntity<String>("VALID",HttpStatus.OK);
 		else
-			return new ResponseEntity<String>("IN-VALID",HttpStatus.OK);
+			throw new NoDataFoundException();
 
 	}
 
