@@ -20,7 +20,7 @@ public class SSNServiceImpl implements SSNService {
 		return repo.save(entity);
 	}
 	@Override
-	public Boolean findBySSN(Long ssn) {
+	public Boolean findBySSN(String ssn) {
 		return (repo.findBySsn(ssn)!=null);
 	}
 

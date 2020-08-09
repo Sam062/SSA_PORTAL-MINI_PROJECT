@@ -16,8 +16,8 @@ public class SSNValidater {
 	private SSNService service;
 
 	@PostMapping("/validateSSN/{ssn}")
-	public ResponseEntity<String> validateSSN(@PathVariable("ssn")Long number) {
-		Boolean isSSNExist = service.findBySSN(number);
+	public ResponseEntity<String> validateSSN(@PathVariable("ssn")String ssn) {
+		Boolean isSSNExist = service.findBySSN(ssn);
 		if(isSSNExist)
 			return new ResponseEntity<String>("VALID",HttpStatus.OK);
 		else

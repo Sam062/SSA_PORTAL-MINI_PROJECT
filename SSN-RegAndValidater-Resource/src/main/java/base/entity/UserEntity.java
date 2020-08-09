@@ -7,6 +7,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Column;
@@ -20,9 +21,10 @@ import lombok.Data;
 @Table(name = "USER_SSN")
 public class UserEntity {
 	@Id
-	@GeneratedValue
+	@GenericGenerator(name = "ID_GEN",strategy = "base.idGen.UserIDGenereater")
+	@GeneratedValue(generator = "ID_GEN")
 	@Column(name = "SSN")
-	private Long ssn;
+	private String ssn;
 	@Column(name = "FNAME")
 	private String firstName;
 	@Column(name = "LNAME")
