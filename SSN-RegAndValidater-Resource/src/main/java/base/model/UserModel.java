@@ -8,8 +8,8 @@ import lombok.Data;
 
 @Data
 public class UserModel {
-	private String firstName;
-	private String lastName;
+	private String fname;
+	private String lname;
 	private String gender;
 	
 	@DateTimeFormat(pattern = "dd-MM-yyyy")

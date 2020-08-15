@@ -26,9 +26,9 @@ public class UserEntity {
 	@Column(name = "SSN")
 	private String ssn;
 	@Column(name = "FNAME")
-	private String firstName;
+	private String fname;
 	@Column(name = "LNAME")
-	private String lastName;
+	private String lname;
 	@Column(name = "GENDER")
 	private String gender;
 

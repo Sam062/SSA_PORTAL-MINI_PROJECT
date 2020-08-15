@@ -12,8 +12,8 @@ import base.error.ApiError;
 @ControllerAdvice
 public class RestExceptionHandler {
 	@ExceptionHandler(value= NoDataFoundException.class)
-	public ResponseEntity handleNoDataFoundException() {
-		return new ResponseEntity<>(new ApiError(400,"NO Data Found!"),HttpStatus.BAD_REQUEST);
+	public ResponseEntity<ApiError> handleNoDataFoundException() {
+		return new ResponseEntity<ApiError>(new ApiError(400,"Bad Request!"),HttpStatus.BAD_REQUEST);
 	}
 
 }
