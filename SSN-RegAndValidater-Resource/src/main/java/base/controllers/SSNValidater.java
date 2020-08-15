@@ -3,8 +3,8 @@ package base.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import base.exceptions.NoDataFoundException;
@@ -15,7 +15,7 @@ public class SSNValidater {
 	@Autowired
 	private SSNService service;
 
-	@PostMapping(value = "/validateSSN/{ssn}", produces = "application/json")
+	@GetMapping(value = "/validateSSN/{ssn}", produces = "application/json")
 	public ResponseEntity<String> validateSSN(@PathVariable("ssn")String ssn) {
 		try {
 			Boolean isSSNExist = service.findBySSN(ssn);
