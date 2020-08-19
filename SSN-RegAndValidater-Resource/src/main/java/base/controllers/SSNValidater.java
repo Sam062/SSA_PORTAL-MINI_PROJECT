@@ -15,16 +15,20 @@ public class SSNValidater {
 	@Autowired
 	private SSNService service;
 
-	@GetMapping(value = "/validateSSN/{ssn}", produces = "application/json")
+	@GetMapping(value = "/validateSSN/{ssn}")
 	public ResponseEntity<String> validateSSN(@PathVariable("ssn")String ssn) {
 		try {
 			Boolean isSSNExist = service.findBySSN(ssn);
-			if(isSSNExist)
+			if(isSSNExist) {
+				System.out.println("VALID SSN");
 				return new ResponseEntity<>("VALID",HttpStatus.OK);
+			}
 			else {
-				return new ResponseEntity<>("INVALID",HttpStatus.NO_CONTENT);
+				System.out.println("INVALID SSN");
+				return new ResponseEntity<>("INVALID",HttpStatus.OK);
 			}
 		} catch (Exception e) {
+			System.out.println("CATCH BLOCK");
 			throw new NoDataFoundException();
 		}
 	}
